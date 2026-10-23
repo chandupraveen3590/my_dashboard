@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chandupraveen Reddy | AI & ML Portfolio</title>
+<style>
+:root{--bg:#070b16;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.12);--ink:#eef2ff;--mute:#9aa7c7;--a:#6ea8ff;--b:#35e0c2;--c:#ff6b9a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#f3f6ff;--card:rgba(255,255,255,.75);--bd:rgba(20,33,61,.12);--ink:#14213d;--mute:#56607a;--a:#2f5bea;--b:#0e9f8e;--c:#d6336c;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+canvas#net{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+header{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--bd)}
+header b{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--b)}
+nav{display:flex;gap:18px;align-items:center;overflow-x:auto}
+nav a{color:var(--mute);text-decoration:none;font-size:14px;white-space:nowrap}nav a:hover{color:var(--ink)}
+#th{background:var(--card);border:1px solid var(--bd);color:var(--ink);border-radius:20px;padding:5px 11px;cursor:pointer}
+main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 5vw}
+section{padding:70px 0 10px}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+.hi{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--b);font-size:15px}
+h1{font-size:clamp(34px,7vw,72px);line-height:1.05;margin:8px 0;letter-spacing:-1px}
+h1 span{background:linear-gradient(90deg,var(--a),var(--b),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:flow 6s linear infinite}
+@keyframes flow{to{background-position:200%}}
+.type{font-size:clamp(18px,3vw,26px);color:var(--mute);min-height:1.6em}
+.type i{display:inline-block;width:2px;height:1.1em;background:var(--b);vertical-align:-3px;margin-left:3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{padding:11px 20px;border-radius:30px;border:1px solid var(--bd);color:var(--ink);text-decoration:none;font-size:14px;background:var(--card);transition:.25s}
+.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#04111f;border:0;font-weight:600}
+button.btn{font-family:inherit;cursor:pointer}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px -10px var(--a)}
+h2{font-size:28px;margin:0 0 6px}h2::before{content:"// ";color:var(--b);font-family:ui-monospace,monospace}
+.sub{color:var(--mute);margin:0 0 24px}
+.glass{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;backdrop-filter:blur(10px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.stat b{display:block;font-size:38px;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--mute);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+.tilt{transition:transform .15s}
+h3{margin:0 0 4px;font-size:18px}.m{color:var(--mute);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 10px;border-radius:20px;background:color-mix(in srgb,var(--b) 18%,transparent);color:var(--b);margin-bottom:10px}
+ul{padding-left:18px;margin:10px 0 0;font-size:14px;color:var(--mute)}
+.seam{width:100%;height:auto;margin-top:12px;border-radius:12px;background:rgba(0,0,0,.18)}
+.seam path{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.p1{stroke:var(--a);animation:d1 12s infinite}.p2{stroke:var(--c);animation:d2 12s infinite}.p3{stroke:var(--b);animation:d3 12s infinite}
+@keyframes d1{0%{stroke-dashoffset:1}25%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+@keyframes d2{0%,25%{stroke-dashoffset:1}42%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+@keyframes d3{0%,52%{stroke-dashoffset:1}75%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+.seam text{font:11px ui-monospace,monospace;opacity:0}
+.l1{fill:var(--c);animation:t1 12s infinite}.l2{fill:var(--b);animation:t2 12s infinite}
+@keyframes t1{0%,40%{opacity:0}46%,92%{opacity:1}100%{opacity:0}}
+@keyframes t2{0%,72%{opacity:0}78%,92%{opacity:1}100%{opacity:0}}
+.orbs{display:flex;flex-wrap:wrap;gap:12px}
+.orb{padding:10px 18px;border-radius:30px;background:var(--card);border:1px solid var(--bd);font-size:14px;animation:fl 5s ease-in-out infinite;transition:.2s}
+.orb:nth-child(2n){animation-delay:-1.5s}.orb:nth-child(3n){animation-delay:-3s}
+.orb:hover{border-color:var(--b);color:var(--b)}
+@keyframes fl{50%{transform:translateY(-6px)}}
+.skg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.skg h3{font-size:14px;color:var(--a);margin-bottom:10px;font-family:ui-monospace,monospace}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--a),var(--b),var(--c))}
+.tl .it{position:relative;margin-bottom:18px}
+.tl .it::before{content:"";position:absolute;left:-26px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--b)}
+.yr{font-family:ui-monospace,monospace;font-size:12px;color:var(--b)}
+.pct{height:6px;border-radius:6px;background:var(--bd);margin-top:10px;overflow:hidden}
+.pct i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.on{opacity:1;transform:none}
+.con{text-align:center;padding:30px}.con a.btn{margin:6px}
+footer{position:relative;z-index:1;text-align:center;color:var(--mute);font-size:12px;padding:40px 0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.seam path{stroke-dashoffset:0}.seam text{opacity:1}.pct i{width:var(--w)}}
+</style>
+</head>
+<body>
+<canvas id="net"></canvas>
+<header><b>Dashboard</b>
+<nav><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#path">Journey</a><a href="#contact">Contact</a><button id="th" aria-label="Toggle theme">◐</button></nav></header>
+<main>
+<section class="hero" id="top">
+  <div class="hi">&gt; hello_world()</div>
+  <h1>I’m <span>Chandupraveen Reddy</span></h1>
+  <div class="type" id="type"></div>
+  <p class="m" style="max-width:620px;margin-top:14px">Final-year B.Tech student (AI & ML) at Mohan Babu University, Tirupati, building machine learning systems that keep learning after deployment.</p>
+  <div class="cta"><a class="btn p" href="#work">See my work</a><a class="btn" href="#contact">Get in touch</a></div>
+</section>
+
+<section id="about">
+  <h2>By the numbers</h2><p class="sub">Computer Science Engineering · AI & ML · 2023 – 2027</p>
+  <div class="stats">
+    <div class="glass stat"><b data-n="8.61" data-d="2">8.61</b><span>B.Tech CGPA / 10</span></div>
+    <div class="glass stat"><b data-n="90.10" data-d="2">90.10</b><span>12th Intermediate % (MPC)</span></div>
+    <div class="glass stat"><b data-n="99.50" data-d="2">99.50</b><span>10th SSC %</span></div>
+    <div class="glass stat"><b data-n="1" data-d="0">1</b><span>Google Cloud virtual internship</span></div>
+  </div>
+  <p class="m" style="margin-top:18px">Familiar with Java, SQL, HTML and OOP, with hands-on exposure to Google Cloud. A quick learner who enjoys problem solving and working in teams.</p>
+</section>
+
+<section id="work">
+  <h2>Work</h2><p class="sub">Final year project and internship</p>
+  <div class="grid">
+    <div class="glass tilt rv">
+      <span class="tag">FINAL YEAR PROJECT · ONGOING</span>
+      <h3>SEAM – Self-Evolving and Adaptive ML Framework</h3>
+      <div class="m">A framework for continuous learning and drift detection, covering model adaptation, retraining, validation and monitoring.</div>
+      <svg class="seam" viewBox="0 0 600 150" role="img" aria-label="Animation: model accuracy drops when drift is detected, then recovers after retraining">
+        <path class="p1" pathLength="1" d="M10 50 C60 40 90 60 140 48 S200 52 240 50"/>
+        <path class="p2" pathLength="1" d="M240 50 C270 60 290 100 340 120"/>
+        <path class="p3" pathLength="1" d="M340 120 C370 90 400 60 450 52 S550 46 590 48"/>
+        <text class="l1" x="250" y="140">drift detected</text>
+        <text class="l2" x="420" y="30">retrained · recovered</text>
+        <text x="10" y="142" fill="currentColor" style="opacity:.5">model accuracy over time</text>
+      </svg>
+      <ul><li>Developing an ML framework for continuous learning and drift detection.</li><li>Covers model adaptation, retraining, validation, and monitoring.</li></ul>
+    </div>
+    <div class="glass tilt rv">
+      <span class="tag">INTERNSHIP · COMPLETED</span>
+      <h3>Google Cloud Engineering Virtual Internship</h3>
+      <div class="m">EduSkills Foundation</div>
+      <ul><li>Gained hands-on exposure to Google Cloud and cloud infrastructure.</li><li>Completed cloud engineering tasks and assessments.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2><p class="sub">Tools and strengths</p>
+  <div class="skg">
+    <div class="glass rv"><h3>languages</h3><div class="orbs"><span class="orb">Java</span><span class="orb">SQL (Basics)</span></div></div>
+    <div class="glass rv"><h3>web & data</h3><div class="orbs"><span class="orb">HTML</span><span class="orb">MySQL</span></div></div>
+    <div class="glass rv"><h3>core subjects</h3><div class="orbs"><span class="orb">DBMS (Basics)</span><span class="orb">OOP (Basics)</span></div></div>
+    <div class="glass rv"><h3>soft skills</h3><div class="orbs"><span class="orb">Quick Learner</span><span class="orb">Communication</span><span class="orb">Problem Solving</span><span class="orb">Team Collaboration</span></div></div>
+  </div>
+  <div class="glass rv" style="margin-top:18px"><h3>Certifications</h3>
+    <div class="orbs" style="margin-top:10px"><span class="orb">STEP · English Language Proficiency</span><span class="orb">IBM · Introduction to AI</span></div>
+    <p class="m" style="margin:14px 0 0">Languages: English, Telugu, German (very limited exposure)</p></div>
+</section>
+
+<section id="path">
+  <h2>Journey</h2><p class="sub">Education timeline</p>
+  <div class="tl">
+    <div class="it glass rv"><span class="yr">2023 – 2027</span><h3>B.Tech – CSE (AI & ML)</h3><div class="m">Mohan Babu University, Tirupati · CGPA 8.61 · Full-time</div><div class="pct"><i data-w="86.1" style="--w:86.1%"></i></div></div>
+    <div class="it glass rv"><span class="yr">2021 – 2023</span><h3>12th (Intermediate) – MPC, BIE AP</h3><div class="m">Sanskriti Junior College, Tirupati · 90.10% · Full-time</div><div class="pct"><i data-w="90.1" style="--w:90.1%"></i></div></div>
+    <div class="it glass rv"><span class="yr">2020 – 2021</span><h3>10th (SSC) – SSC AP</h3><div class="m">Nagarjuna High School, Renigunta · 99.50% · Full-time</div><div class="pct"><i data-w="99.5" style="--w:99.5%"></i></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="glass con rv">
+    <h2 style="margin-bottom:8px">Let’s connect</h2>
+    <p class="m">Open to opportunities where I can apply my skills and keep growing.</p>
+    <a class="btn p" href="https://mail.google.com/mail/?view=cm&fs=1&to=chandupraveenreddy77@gmail.com&su=Hello%20Chandupraveen" target="_blank" rel="noopener">Email me</a>
+    <button class="btn" id="cp" type="button">Copy email</button>
+    <a class="btn" href="https://in.linkedin.com/in/chandupraveen-reddy-a54330302" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="m" style="margin-top:10px">Tirupati, Andhra Pradesh</div>
+  </div>
+</section>
+</main>
+<footer>© Budamala Chandupraveen Reddy</footer>
+<script>
+var root=document.documentElement;
+document.getElementById('th').onclick=function(){root.dataset.theme=root.dataset.theme==='light'?'dark':'light'};
+document.getElementById('cp').onclick=function(){var b=this,m='chandupraveenreddy77@gmail.com';function ok(){b.textContent='Copied: '+m;setTimeout(function(){b.textContent='Copy email'},2500)}if(navigator.clipboard){navigator.clipboard.writeText(m).then(ok,function(){b.textContent=m})}else{b.textContent=m}};
+var roles=['AI & ML Engineer in the making','Builder of SEAM','Google Cloud learner','Quick learner & problem solver'],ri=0,ci=0,del=false,el=document.getElementById('type');
+function tick(){var r=roles[ri];ci+=del?-1:1;el.innerHTML=r.slice(0,ci)+'<i></i>';
+var t=del?35:70;if(!del&&ci===r.length){del=true;t=1400}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;t=300}setTimeout(tick,t)}
+tick();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var n=e.target;n.classList.add('on');
+n.querySelectorAll('[data-w]').forEach(function(b){b.style.width=b.dataset.w+'%'});io.unobserve(n)})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var n=e.target,to=+n.dataset.n,d=+n.dataset.d,s=performance.now();
+(function f(t){var p=Math.min((t-s)/1400,1);n.textContent=(to*(1-Math.pow(1-p,3))).toFixed(d);if(p<1)requestAnimationFrame(f)})(s);io2.unobserve(n)})});
+document.querySelectorAll('[data-n]').forEach(function(n){io2.observe(n)});
+document.querySelectorAll('.tilt').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+x*5+'deg) rotateX('+-y*5+'deg)'});c.addEventListener('mouseleave',function(){c.style.transform=''})});
+var cv=document.getElementById('net'),cx=cv.getContext('2d'),P=[],W,H,mx=-999,my=-999;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=[];var n=Math.min(70,Math.floor(W*H/18000));for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
+size();addEventListener('resize',size);addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
+function draw(){cx.clearRect(0,0,W,H);var cs=getComputedStyle(root),a=cs.getPropertyValue('--a').trim(),b=cs.getPropertyValue('--b').trim();
+for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+cx.fillStyle=a;cx.globalAlpha=.7;cx.beginPath();cx.arc(p.x,p.y,2,0,6.3);cx.fill();
+for(var j=i+1;j<P.length;j++){var q=P[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<130){cx.strokeStyle=a;cx.globalAlpha=(1-d/130)*.25;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}
+var mdx=p.x-mx,mdy=p.y-my,md=Math.sqrt(mdx*mdx+mdy*mdy);if(md<160){cx.strokeStyle=b;cx.globalAlpha=(1-md/160)*.6;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(mx,my);cx.stroke()}}
+requestAnimationFrame(draw)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)draw();
+</script>
+</body>
+</html>
